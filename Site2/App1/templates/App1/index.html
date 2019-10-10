@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ head }}{% endblock title %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    {% for x in cal %}
+        <ul class="a">
+        {% for key, value in x.items %}
+            <li>
+                {{ key }}: {{ value }}
+            </li>
+        {% endfor %}
+        </ul>
+    <br>
+    {% endfor %}
+{% endblock content %}

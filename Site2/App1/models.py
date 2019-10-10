@@ -31,4 +31,4 @@ class Animal(models.Model):
     )
 
     def __str__(self):
-        return '%s, Nro: %s, Color: %s, Estado %s.' % (self.name, self.nro, self.color, self.stage)
+        return '%s, Nro: %s, Color: %s, Estado: %s.' % (self.name, self.nro, self.color, self.stage)

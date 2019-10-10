@@ -8,12 +8,33 @@ def index(request):
     animals = []
     for animal in animales:
         animals.append({
-            animal.nro: {
+                'nro': animal.nro,
                 'name': animal.name,
                 'color': animal.color,
                 'nacimiento': animal.birth,
-                'etapa': animal.stage}
+                'etapa': animal.stage
             }
         )
-    #return HttpResponse("Hello, world. You're at the App1 index.")
-    return JsonResponse(animals, safe=False)
+
+    title = 'Animales actuales'
+    cal = animals
+    head = 'Site1/App1'
+    
+    return render(request, 'App1/index.html', {'head': head, 'title': title, 'cal': cal})
+
+
+def profile(request, nro):
+    animal = Animal.objects.filter(nro=nro)[0]
+
+    ani_mal = {'nro': animal.nro,
+                'name': animal.name,
+                'color': animal.color,
+                'nacimiento': animal.birth,
+                'etapa': animal.stage
+               }
+
+    head = animal.name
+    title = 'Perfil %s'%animal.name
+    cal = [ani_mal]
+
+    return render(request, 'App1/index.html', {'head': head, 'title': title, 'cal': cal})
