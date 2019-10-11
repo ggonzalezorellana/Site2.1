@@ -15,8 +15,21 @@
 
     <body>
         <div class="row" id="banner">
-            <div class="col-sm-2" id="banner_2">Site 1</div>
-            <div class="col-sm-10" id="banner_10">App 1</div>
+            <div class="col-sm-2 text-right" id="banner_2">
+                <a href="{% url 'index' %}" class="text-white">Home</a>
+            </div>
+            <div class="col-sm-10" id="banner_10">
+                <div class="dropdown">
+                    <button id="boton" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Caballos
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for animal in productos %}
+                            <a class="dropdown-item" href="{% url 'profiles' nro=animal.nro %}">{{ animal.name }}, {{ animal.nro }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
         {% block content %}
            <p>Placeholder text in base template. Replace with page content.</p>

@@ -35,3 +35,8 @@ ul {
   margin: 5px;
   padding-left: 25px;
 }
+#boton {
+  background-color: #5c74e0;
+  color: white;
+  border-color: #5c74e0;
+}

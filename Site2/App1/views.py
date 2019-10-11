@@ -19,12 +19,13 @@ def index(request):
     title = 'Animales actuales'
     cal = animals
     head = 'Site1/App1'
-    
-    return render(request, 'App1/index.html', {'head': head, 'title': title, 'cal': cal})
+
+    return render(request, 'App1/index.html', {'head': head, 'title': title, 'cal': cal, 'productos': animales})
 
 
 def profile(request, nro):
     animal = Animal.objects.filter(nro=nro)[0]
+    animales = Animal.objects.all()
 
     ani_mal = {'nro': animal.nro,
                 'name': animal.name,
@@ -37,4 +38,4 @@ def profile(request, nro):
     title = 'Perfil %s'%animal.name
     cal = [ani_mal]
 
-    return render(request, 'App1/index.html', {'head': head, 'title': title, 'cal': cal})
+    return render(request, 'App1/index.html', {'head': head, 'title': title, 'cal': cal, 'productos': animales})
